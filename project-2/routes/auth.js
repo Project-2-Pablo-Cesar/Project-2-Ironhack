@@ -26,9 +26,10 @@ router.get("/signup", (req, res, next) => {
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
+  const email    =req.body.email;
   const password = req.body.password;
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+  if (username === "" || password === "" || email === "") {
+    res.render("auth/signup", { message: "Please fill up all the fields." });
     return;
   }
 
@@ -37,12 +38,14 @@ router.post("/signup", (req, res, next) => {
       res.render("auth/signup", { message: "The username already exists" });
       return;
     }
+    
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
     const newUser = new User({
       username,
+      email,
       password: hashPass
     });
 

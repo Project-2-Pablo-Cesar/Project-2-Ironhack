@@ -20,17 +20,17 @@ mongoose
 
 let users = [
   { 
-  name: String,
-  email: String,  
+  name: "Pablo",
+  email: "pablo.tabu@hotmal.com",  
   username: "Pablo",
-  password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+  password: bcrypt.hashSync("pablo", bcrypt.genSaltSync(bcryptSalt)),
   role: 'ADMIN'
   },
   {
-    name: String,
+    name: "César",
     email: String,
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+    username: "Cesar",
+    password: bcrypt.hashSync("César", bcrypt.genSaltSync(bcryptSalt)),
     role: 'ADMIN'
   }
 ]
