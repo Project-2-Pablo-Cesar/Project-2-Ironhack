@@ -1,31 +1,32 @@
 const express = require('express');
 const router  = express.Router();
+const { ensureAuthenticated, hasRole } = require('../middlewares/authentication')
 
-router.get("/home", (req, res, next) => {
+router.get("/home",ensureAuthenticated, (req, res, next) => {
   res.render("Users/index");
 });
 
-router.get("/service-creation", (req, res, next) => {
+router.get("/service-creation",ensureAuthenticated, (req, res, next) => {
   res.render("Users/service-creation");
 });
 
-router.get("/detail", (req, res, next) => {
+router.get("/detail",ensureAuthenticated, (req, res, next) => {
   res.render("Users/service-detail");
 });
 
-router.get("/list", (req, res, next) => {
+router.get("/list",ensureAuthenticated, (req, res, next) => {
   res.render("Users/services-list");
 });
 
-router.get("/search", (req, res, next) => {
+router.get("/search",ensureAuthenticated, (req, res, next) => {
   res.render("Users/services-search");
 });
 
-router.get("/profile", (req, res, next) => {
+router.get("/profile",ensureAuthenticated, (req, res, next) => {
   res.render("Users/user-profile");
 });
 
-router.get("/finished", (req, res, next) => {
+router.get("/finished",ensureAuthenticated, (req, res, next) => {
   res.render("Users/service-completed");
 });
 
