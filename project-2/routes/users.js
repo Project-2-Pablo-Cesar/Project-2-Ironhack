@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { ensureAuthenticated, hasRole } = require('../middlewares/authentication')
+const { ensureAuthenticated, hasRole } = require('../middlewares/authentication');
 
 router.get("/home",ensureAuthenticated, (req, res, next) => {
   res.render("Users/index");

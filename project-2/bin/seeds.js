@@ -29,8 +29,8 @@ let users = [
   {
     name: "César",
     email: String,
-    username: "Cesar",
-    password: bcrypt.hashSync("César", bcrypt.genSaltSync(bcryptSalt)),
+    username: "cesar",
+    password: bcrypt.hashSync("12345", bcrypt.genSaltSync(bcryptSalt)),
     role: 'ADMIN'
   }
 ]
