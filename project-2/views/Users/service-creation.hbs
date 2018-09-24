@@ -1,0 +1,36 @@
+<li><a href="/">Home</a></li>
+<form method="POST" action="/service-creation" enctype="multipart/form-data">
+  <input type="text" name="title" placeholder="name">
+  <input type="text" name="description" placeholder="description">
+
+  <label>Address</label>
+  <input id="lat-pos" type="hidden" name="latitude" placeholder="Latitude">
+  <input id="lng-pos" type="hidden" name="longitude" placeholder="Longitude">
+  <input type="file" name="photo">
+
+  <input type="submit" value="SAVE">
+</form>
+
+
+
+
+  <div id="map"></div>
+</form>
+<script src="/javascripts/addMap.js"></script>
+
+
+
+
+{{!-- <h2>Upload a new Movie</h2>
+<form action="/movie/add" method="post" enctype="multipart/form-data">
+  <label>Title</label>
+  <input type="text" name="title">
+
+  <label>Description</label>
+  <input type="text" name="description">
+
+  <label>Poster</label>
+  <input type="file" name="photo">
+
+  <input type="submit" value="SAVE">
+</form> --}}

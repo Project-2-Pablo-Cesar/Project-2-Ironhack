@@ -8,8 +8,8 @@ serviceExpiresDate: Date,
 user: {type : Schema.Types.ObjectId, ref: 'User'},
 agent:  { type: Schema.Types.ObjectId, ref: 'User' },
 serviceDescription: String,
-picpath: String,
-picname: String,
+picPath: String,
+picName: String,
 location: { type: { type: String }, coordinates: [Number] }
 
 
