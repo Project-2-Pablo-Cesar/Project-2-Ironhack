@@ -5,8 +5,8 @@ const uploadCloud = require('../config/cloudinary.js');
 const Service = require('../models/Service.js')
 const User = require('../models/User.js')
 
-router.get("/home",ensureAuthenticated, (req, res, next) => {
-  res.render("Users/index");
+router.get("/home", (req, res, next) => {
+  res.render("index");
 });
 
 
@@ -40,7 +40,14 @@ router.post('/service-creation', uploadCloud.single('photo'), (req, res, next) =
 
 
 router.get("/detail/:id",ensureAuthenticated, (req, res, next) => {
-  res.render("Users/service-detail");
+  let serviceId = req.params.id;
+  Service.findById(serviceId)
+  .then(services => {
+    console.log(services)
+    res.render('Users/service-detail',{services});
+  }).catch(err => {
+    next(err)
+  })
 });
 
 

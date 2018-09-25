@@ -1,4 +1,4 @@
-<li><a href="/">Home</a></li>
+
 <form method="POST" action="/service-creation" enctype="multipart/form-data">
   <p>Tipo de servicio<input type="text" name="title" placeholder="name"></p>
   <p>Descripción<input type="text" name="serviceDescription" placeholder="description" ></p>
@@ -12,11 +12,12 @@
   <input type="submit" value="SAVE">
 </form>
 
-
-
-
   <div id="map"></div>
 </form>
+
+  <script src="/javascripts/geolocalize.js"></script>       
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOXhMp4E30ha1GS_n7slRbRVwn-EjdyIc"></script>
+    <script type="text/javascript" src="/javascripts/addMap.js"></script>
 {{!-- <script src="/javascripts/addMap.js"></script> --}}
 
 

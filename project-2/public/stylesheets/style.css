@@ -73,4 +73,19 @@ a {
   .event .img {
     display: none; } }
 
+.my-form {
+  color: #305896; }
+
+.my-form .btn-default {
+  background-color: #305896;
+  color: #fff;
+  border-radius: 0; }
+
+.my-form .btn-default:hover {
+  background-color: #4498C6;
+  color: #fff; }
+
+.my-form .form-control {
+  border-radius: 0; }
+
 /*# sourceMappingURL=style.css.map */

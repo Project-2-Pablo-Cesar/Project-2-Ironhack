@@ -2,13 +2,28 @@
   <h1>{{user.username}}</h1>
   <ul>
     <li>
-      
       <h5>Email: {{user.email}}</h5>
     </li>
   </ul>
   {{#each services}}
-<p>{{this.title}}</p>
-<img src="{{this.picPath}}" alt="">
-{{/each}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="event">
+                <div class="img">
+                    <img alt="Event Image"src="{{this.picPath}}" >
+                </div>
+                <div class="desc">
+                    <a href="/detail/{{this.id}}"><h3>{{this.title}}</h3></a>
+                    <p>{{this.serviceDescription}}</p>
+                </div>
+                <div class="date float-xs-right">
+                    <div class="day">25</div>
+                    <div class="month">Jul</div>
+                </div>
+
+            </div>
+        </div>
+         {{/each}}
 </section>
 
