@@ -1,20 +1,22 @@
+<h1>List of Services</h1>
+ {{#each services}}
 <div class="container">
-   <div class="row">
-     {{#each services}}
-     <div class="col-md-4">
-       <div class="element-card">
-         {{!-- <div class="img-box">
-           <img class="img-fluid text-center" src="{{this.image}}" />
-         </div> --}}
-           <div class="element-caption text-center">
-           <h4 class="text-center">{{this.title}}</h4>
-           <h5 class="text-center">{{this.serviceDescription}}</h5>
-           <img src="{{this.picPath}}" alt="{{this.picName}}"></p>
-         </div>
-       </div>
-     </div>
-     {{/each}}
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="event">
+                <div class="img">
+                    <img alt="Event Image"src="{{this.picPath}}" >
+                </div>
+                <div class="desc">
+                    <a href="/detail/{{this.id}}"><h3>{{this.title}}</h3></a>
+                    <p>{{this.serviceDescription}}</p>
+                  
+                </div>
+                <div class="date float-xs-right">
+                    <div class="day">25</div>
+                    <div class="month">Jul</div>
+                </div>
 
-   </div>
- </div>
-
+            </div>
+        </div>
+         {{/each}}

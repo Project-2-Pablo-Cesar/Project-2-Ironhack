@@ -36,7 +36,7 @@ router.post('/service-creation', uploadCloud.single('photo'), (req, res, next) =
 
 
 
-router.get("/detail",ensureAuthenticated, (req, res, next) => {
+router.get("/detail/:id",ensureAuthenticated, (req, res, next) => {
   res.render("Users/service-detail");
 });
 
