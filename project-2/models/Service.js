@@ -3,16 +3,23 @@ const Schema   = mongoose.Schema;
 
 const serviceSchema = new Schema ({
 title: String,
-serviceDate: Date,
+//serviceDate: Date,
 serviceExpiresDate: Date,
 user: {type : Schema.Types.ObjectId, ref: 'User'},
 //agent:  { type: Schema.Types.ObjectId, ref: 'User' },
 serviceDescription: String,
 picPath: String,
 picName: String,
-location: { type: { type: String }, coordinates: [Number] }
+location: { type: { type: String }, coordinates: [Number] },
 
 
+
+},
+{ 
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
 })
 
 

@@ -1,12 +1,13 @@
 <li><a href="/">Home</a></li>
-<form method="POST" action="/user/service-creation" enctype="multipart/form-data">
-  <input type="text" name="title" placeholder="name">
-  <input type="text" name="serviceDescription" placeholder="description" >
-
+<form method="POST" action="/service-creation" enctype="multipart/form-data">
+  <p>Tipo de servicio<input type="text" name="title" placeholder="name"></p>
+  <p>Descripción<input type="text" name="serviceDescription" placeholder="description" ></p>
+  <p>Photo<input type="file" name="photo"></p>
+  
+  <p>Until <input type="date" name="pickupDate" id="serviceExpiresDate"></p>
   <label>Address</label>
   <input id="lat-pos" type="hidden" name="latitude" placeholder="Latitude">
   <input id="lng-pos" type="hidden" name="longitude" placeholder="Longitude">
-  <input type="file" name="photo">
 
   <input type="submit" value="SAVE">
 </form>

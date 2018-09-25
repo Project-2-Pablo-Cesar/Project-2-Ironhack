@@ -19,15 +19,15 @@ router.get("/service-creation",ensureAuthenticated, (req, res, next) => {
 
 router.post('/service-creation', uploadCloud.single('photo'), (req, res, next) => {
   console.log('pepe')
-  const { title, serviceDescription } = req.body;
+  const { title, serviceDescription, serviceExpiresDate } = req.body;
   const picPath = req.file.url;
   const picName = req.file.originalname;
-  const newService = new Service({title, serviceDescription, picPath, picName})
+  const newService = new Service({title, serviceDescription, serviceExpiresDate, picPath, picName})
   newService.save()
   .then(service => {
     console.log(service)
     console.log('pablo')
-    res.redirect('/user/list')
+    res.redirect('/')
   })
   .catch(error => {
     console.log(error)
@@ -61,8 +61,11 @@ router.get("/search",ensureAuthenticated, (req, res, next) => {
 
 
 router.get("/profile",ensureAuthenticated, (req, res, next) => {
-  
-  res.render("Users/user-profile");
+  User.find()
+  .then(user =>{
+    res.render("Users/user-profile", {user});
+    
+  })
 });
 
 
