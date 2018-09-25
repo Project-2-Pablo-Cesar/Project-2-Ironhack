@@ -82,7 +82,7 @@ const authRoutes = require('./routes/auth');
 app.use('/', authRoutes);
       
 const users = require('./routes/users');
-app.use('/user', users);
+app.use('/', users);
 
 const admin = require('./routes/admin');
 app.use('/admin', admin);

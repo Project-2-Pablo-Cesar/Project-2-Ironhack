@@ -3,7 +3,9 @@ const Schema   = mongoose.Schema;
 
 const ratingSchema = new Schema({
 content : String,
-authorId : {type: Schema.Types.ObjectId, ref: 'User'}
+authorId : {type: Schema.Types.ObjectId, ref: 'User'},
+destinationComment : {type: Schema.Types.ObjectId, ref: 'User'}
+
 
 })
 
