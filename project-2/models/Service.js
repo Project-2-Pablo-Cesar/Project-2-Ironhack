@@ -23,7 +23,7 @@ location: { type: { type: String }, coordinates: [Number] },
 })
 
 
-serviceSchema.set('timestamps', true);
+//serviceSchema.set('timestamps', true);
 const Service = mongoose.model('Service', serviceSchema)
 
 module.exports = Service;

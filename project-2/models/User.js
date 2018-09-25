@@ -16,7 +16,7 @@ const userSchema = new Schema({
     default : 'USER'
   },
   isAgent: { type: Boolean, default: false},
-
+  service: {type : Schema.Types.ObjectId, ref: 'Service'}
   
 }, {
   timestamps: {
