@@ -1,11 +1,14 @@
 <section>
-  <h1>My Profile</h1>
+  <h1>{{user.username}}</h1>
   <ul>
     <li>
-      <h4>{{user.username}}</h4>
-      <h5>Role: {{user.role}}</h5>
+      
+      <h5>Email: {{user.email}}</h5>
     </li>
   </ul>
-  <a href="/users">Back</a>
+  {{#each services}}
+<p>{{this.title}}</p>
+<img src="{{this.picPath}}" alt="">
+{{/each}}
 </section>
 
