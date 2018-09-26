@@ -28,6 +28,7 @@ router.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const email    =req.body.email;
   const password = req.body.password;
+  console.log(req.body)
   if (username === "" || password === "" || email === "") {
     res.render("auth/signup", { message: "Please fill up all the fields." });
     return;
