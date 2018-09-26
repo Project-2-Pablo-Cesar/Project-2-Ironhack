@@ -118,7 +118,8 @@ router.post('/detail/:id', uploadCloud.single('photo'), (req, res, next) => {
 
 router.get("/list", ensureAuthenticated, (req, res, next) => {
   Service.find({
-      type: "original"
+      type: "original",
+      status:"open"
     })
     .then(services => {
       res.render("Users/services-list", {
@@ -152,8 +153,21 @@ router.get("/profile", ensureAuthenticated, (req, res, next) => {
 
 });
 
-router.get("/finished", ensureAuthenticated, (req, res, next) => {
-  res.render("Users/service-completed");
+router.get("/finished/:id/:id2", ensureAuthenticated, (req, res, next) => {
+  let serviceId = req.params.id;
+  let offerId = req.params.id2;
+  Service.findByIdAndUpdate(serviceId,{status:"closed"})
+    .then( service =>{
+  Service.findById(serviceId)
+    .then( service =>{
+      Service.findById(offerId)
+      .then(offer => {
+      res.render('Users/service-completed', {offer, service} );
+      }).catch(error => {
+        console.log(error)
+      })
+    })
+  })
 });
 
 
