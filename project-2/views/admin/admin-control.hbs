@@ -1,3 +1,35 @@
-{{#if message }}
+{{!-- {{#if message }}
     <div class="error-message">{{ message }}</div>
-  {{/if}}
+  {{/if}} --}}
+  <section>
+    <h1>Manage Users</h1>
+    {{#each users}}
+    <ul>
+        <li>
+            <h4>{{username}}</h4>
+            <p>Role: {{role}}</p>
+            <form action="/admin/users/{{_id}}/delete" method="POST">
+                <input type="hidden" name="userId" value="{{_id}}">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+    {{/each}}
+<br>
+<br>
+<br>
+
+<h1>Manage services</h1>
+{{#each services}}
+    <ul>
+        <li>
+            <h4>{{this.title}}</h4>
+            <p> {{user}}</p>
+            <form action="/admin/{{_id}}/delete" method="POST">
+                <input type="hidden" name="userId" value="{{_id}}">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+    {{/each}}
+</section>

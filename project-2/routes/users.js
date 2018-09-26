@@ -20,11 +20,14 @@ router.get("/service-creation",ensureAuthenticated, (req, res, next) => {
 
 router.post('/service-creation', uploadCloud.single('photo'), (req, res, next) => {
   console.log('pepe')
-  const { title, serviceDescription, serviceExpiresDate } = req.body;
+  
+  const { title, serviceDescription, serviceExpiresDate, latitude, type, longitude } = req.body;
+  console.log(latitude, longitude)
   const user = req.user.id;
+ 
   const picPath = req.file.url;
   const picName = req.file.originalname;
-  const newService = new Service({title, serviceDescription, user, serviceExpiresDate, picPath, picName})
+  const newService = new Service({title, serviceDescription, user, serviceExpiresDate, picPath, picName, type, location : {type: "Point",coordinates: [Number(latitude), Number(longitude)]}})
   newService.save()
   .then(service => {
     console.log(service)
@@ -52,9 +55,31 @@ router.get("/detail/:id",ensureAuthenticated, (req, res, next) => {
 
 
 
+router.post('/detail/:id', uploadCloud.single('photo'), (req, res, next) => {
+  console.log('pepe')
+  const { title, serviceDescription, serviceExpiresDate, latitude, type, longitude} = req.body;
+  const user = req.user.id;
+  const picPath = req.file.url;
+  const picName = req.file.originalname;
+
+  const newService = new Service({title, serviceDescription, user, type, serviceExpiresDate, picPath, picName, location : {type: "Point",coordinates: [Number(latitude), Number(longitude)]}})
+  newService.save()
+  .then(service => {
+    console.log(service)
+    console.log('pablo')
+    
+    res.redirect('/detail/:id')
+  })
+  .catch(error => {
+    console.log(error)
+  })
+});
+
+
+
 
 router.get("/list",ensureAuthenticated, (req, res, next) => {
-  Service.find()
+  Service.find( {type : "original"})
   .then(services=>{
     res.render("Users/services-list", {services});
     

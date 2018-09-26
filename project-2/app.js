@@ -63,6 +63,10 @@ hbs.registerHelper('ifUndefined', (value, options) => {
   }
 });
 
+// hbs.registerHelper('role', function(user) {
+//   return user ? 'boss' : ''
+// });
+
 
 // default value for title local
 app.locals.title = 'Mr Wolf';
