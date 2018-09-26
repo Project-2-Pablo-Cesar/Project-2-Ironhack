@@ -10,7 +10,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
-      <form method="POST" action="/service-creation" enctype="multipart/form-data">
+      <form method="POST" action="/detail/{{services.id}}" enctype="multipart/form-data">
         <p>Tipo de servicio<input type="text" name="title" placeholder="name"></p>
         <p>Descripción<input type="text" name="serviceDescription" placeholder="description"></p>
         <p>Photo<input type="file" name="photo"></p>
@@ -18,6 +18,7 @@
         <p>Until <input type="date" name="serviceExpiresDate" id="serviceExpiresDate"></p>
         <label>Address</label>
         <input  type= "hidden" name ="type" value= "change">
+        <input  type= "hidden" name ="destiny" value={{services.id}}>
         <input id="lat-pos" type="hidden" name="latitude" placeholder="Latitude">
         <input id="lng-pos" type="hidden" name="longitude" placeholder="Longitude">
 
@@ -43,7 +44,7 @@
       {
         center: new google.maps.LatLng(44.5403, -78.5463),
         zoom: 8,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        
       }
     );
   });
@@ -59,9 +60,6 @@
     <div class="col-md-6">
       <h1>{{services.title}}</h1>
       <p>{{services.serviceDescription}}</p>
-      {{!-- <div class="img">
-        <img alt="Event Image" src="{{service.picPath}}">
-      </div> --}}
     </div>
     <div class="col-md-6">
       <div id="googlemap" style="width:100%; height:350px;"></div>
@@ -75,17 +73,19 @@
 
 <h2>Han ofrecido..</h2>
 
+{{#each offers}}
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="event">
                 <div class="img">
-                    <img alt="Event Image"src="PL" >
+                    <img alt="Event Image"src="{{this.picPath}}" >
                 </div>
                 <div class="desc">
-                    <a href="/detail/{{this.id}}"><h3>prueba</h3></a>
-                    <p>servicio de prueba</p>
-                  <a href="/detail/{{this.id}}"><h6>¿Qué ofreces a cambio?</h6></a>
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.serviceDescription}}</p>
+                    <a href="/">Aceptar este trueque</a>
+   
                 </div>
                 <div class="date float-xs-right">
                     <div class="day">25</div>
@@ -94,5 +94,6 @@
 
             </div>
         </div>
+         {{/each}}
 
 
