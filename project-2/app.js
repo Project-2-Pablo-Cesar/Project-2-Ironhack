@@ -63,9 +63,10 @@ hbs.registerHelper('ifUndefined', (value, options) => {
   }
 });
 
-// hbs.registerHelper('role', function(user) {
-//   return user ? 'boss' : ''
-// });
+hbs.registerHelper('role',  function(user, role, options) {
+  console.log('role')
+  return (user.role  == role) ? options.fn(this): options.inverse(this)
+});
 
 
 // default value for title local

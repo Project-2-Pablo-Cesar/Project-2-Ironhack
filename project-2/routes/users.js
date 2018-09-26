@@ -46,8 +46,8 @@ router.get("/detail/:id",ensureAuthenticated, (req, res, next) => {
   let serviceId = req.params.id;
   Service.findById(serviceId)
   .then(services => {
-    console.log(services)
-    res.render('Users/service-detail',{services});
+    console.log(services.location.coordinates)
+    res.render('Users/service-detail',{services,serviceStr: JSON.stringify(services)});
   }).catch(err => {
     next(err)
   })

@@ -17,7 +17,7 @@
 
         <p>Until <input type="date" name="serviceExpiresDate" id="serviceExpiresDate"></p>
         <label>Address</label>
-        <input  type= "hidden" name ="type" value= "change">
+        <input type="hidden" name="type" value="change">
         <input id="lat-pos" type="hidden" name="latitude" placeholder="Latitude">
         <input id="lng-pos" type="hidden" name="longitude" placeholder="Longitude">
 
@@ -28,9 +28,9 @@
       </form>
 
 
- <script src="/javascripts/geolocalize.js"></script>       
-    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
-    <script type="text/javascript" src="/javascripts/addMap.js"></script>
+      <script src="/javascripts/geolocalize.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+      <script type="text/javascript" src="/javascripts/addMap.js"></script>
     </div>
   </div>
 </div>
@@ -38,14 +38,19 @@
 <script type="text/javascript">
   jQuery(function ($) {
     // Google Maps setup
+    const center = new google.maps.LatLng({{ services.location.coordinates.[0] }}, {{ services.location.coordinates.[1] }});
     var googlemap = new google.maps.Map(
       document.getElementById('googlemap'),
       {
-        center: new google.maps.LatLng(44.5403, -78.5463),
-        zoom: 8,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
-    );
+        center,
+    zoom: 8,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+      })
+  let marker = new google.maps.Marker({
+    position: center,
+    map: googlemap
+  });
+    
   });
 </script>
 <div class="container">
@@ -59,7 +64,8 @@
     <div class="col-md-6">
       <h1>{{services.title}}</h1>
       <p>{{services.serviceDescription}}</p>
-      {{!-- <div class="img">
+      {{!--
+      <div class="img">
         <img alt="Event Image" src="{{service.picPath}}">
       </div> --}}
     </div>
@@ -76,23 +82,21 @@
 <h2>Han ofrecido..</h2>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="event">
-                <div class="img">
-                    <img alt="Event Image"src="PL" >
-                </div>
-                <div class="desc">
-                    <a href="/detail/{{this.id}}"><h3>prueba</h3></a>
-                    <p>servicio de prueba</p>
-                  <a href="/detail/{{this.id}}"><h6>¿Qué ofreces a cambio?</h6></a>
-                </div>
-                <div class="date float-xs-right">
-                    <div class="day">25</div>
-                    <div class="month">Jul</div>
-                </div>
-
-            </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="event">
+        <div class="img">
+          <img alt="Event Image" src="{{services.picPath}}">
+        </div>
+        <div class="desc">
+          <a href="/detail/{{this.id}}"><h3>prueba</h3></a>
+          <p>servicio de prueba</p>
+          <a href="/detail/{{this.id}}"><h6>¿Qué ofreces a cambio?</h6></a>
+        </div>
+        <div class="date float-xs-right">
+          <div class="day">25</div>
+          <div class="month">Jul</div>
         </div>
 
-
+      </div>
+    </div>
