@@ -8,7 +8,9 @@ const uploadCloud = require('../config/cloudinary.js');
 const Service = require('../models/Service.js');
 const User = require('../models/User.js');
 const transport = require("../Mailing/transport");
-const {mailTemplate} = require("../Mailing/templates")
+const {
+  mailTemplate
+} = require("../Mailing/templates")
 
 router.get("/home", (req, res, next) => {
   res.render("index");
@@ -67,14 +69,19 @@ router.post('/service-creation', uploadCloud.single('photo'), (req, res, next) =
 
 router.get("/detail/:id", ensureAuthenticated, (req, res, next) => {
   let serviceId = req.params.id;
-    Service.findById(serviceId)
-    .then( services =>{
-      Service.find({destiny:serviceId})
-      .then(offers => {
-      res.render('Users/service-detail', {offers, services} );
-      }).catch(error => {
-        console.log(error)
-      })
+  Service.findById(serviceId)
+    .then(services => {
+      Service.find({
+          destiny: serviceId
+        })
+        .then(offers => {
+          res.render('Users/service-detail', {
+            offers,
+            services
+          });
+        }).catch(error => {
+          console.log(error)
+        })
     })
 });
 
@@ -112,7 +119,7 @@ router.post('/detail/:id', uploadCloud.single('photo'), (req, res, next) => {
     .then(service => {
       res.redirect(`/detail/${serviceId}`)
     })
-    
+
 });
 
 
@@ -121,7 +128,7 @@ router.post('/detail/:id', uploadCloud.single('photo'), (req, res, next) => {
 router.get("/list", ensureAuthenticated, (req, res, next) => {
   Service.find({
       type: "original",
-      status:"open"
+      status: "open"
     })
     .then(services => {
       res.render("Users/services-list", {
@@ -158,27 +165,50 @@ router.get("/profile", ensureAuthenticated, (req, res, next) => {
 router.get("/finished/:id/:id2", ensureAuthenticated, (req, res, next) => {
   let serviceId = req.params.id;
   let offerId = req.params.id2;
-  Service.findByIdAndUpdate(serviceId,{status:"closed"})
-    .then( service =>{
-  Service.findById(serviceId)
-    .then( service =>{
-      Service.findById(offerId)
-      .then(offer => {
-        
-        Service.findById(serviceId).populate("user").then(service=> { 
-          console.log(service)
-          transport.sendMail({
-          to:service.user.email,
-          subject:"Mr wolf",
-          text:"prueba",
-          html:mailTemplate(service.user,`http://localhost:3000/`)
-        })}).then(() => res.render('Users/service-completed', {offer, service} ))
-      
-      }).catch(error => {
-        console.log(error)
-      })
+  let serviceGlobal;
+  let offerGlobal;
+
+let mail = {
+  subject:"prueba",
+  text:"esto es una prueba",
+} 
+
+  const email = (user, obj,ref) => {
+    return transport.sendMail({
+      to: user.email,
+      subject: obj.subject,
+      text: obj.text,
+      html: mailTemplate(user, `http://localhost:3000/review/${ref.id}`)
     })
-  })
+  }
+
+  Service.findByIdAndUpdate(serviceId, {
+      status: "closed"
+    }, {
+      new: true
+    })
+    .populate("user")
+    .then(service => {
+      serviceGlobal = service;
+      return Service.findById(offerId)
+        .populate("user")
+    })
+    .then(offer => {
+      offerGlobal = offer;
+      return email(serviceGlobal.user, mail,offerGlobal.user)
+    })
+    .then(() => {
+      return email(offerGlobal.user,mail,serviceGlobal.user)
+    })
+    .then(() => res.render('Users/service-completed', {
+      offerGlobal,
+      serviceGlobal
+    }))
+    .catch(error => {
+      console.log(error)
+    })
+
+
 });
 
 
