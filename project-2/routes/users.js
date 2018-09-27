@@ -5,8 +5,10 @@ const {
   hasRole
 } = require('../middlewares/authentication');
 const uploadCloud = require('../config/cloudinary.js');
-const Service = require('../models/Service.js')
-const User = require('../models/User.js')
+const Service = require('../models/Service.js');
+const User = require('../models/User.js');
+const transport = require("../Mailing/transport");
+const {mailTemplate} = require("../Mailing/templates")
 
 router.get("/home", (req, res, next) => {
   res.render("index");
@@ -162,7 +164,16 @@ router.get("/finished/:id/:id2", ensureAuthenticated, (req, res, next) => {
     .then( service =>{
       Service.findById(offerId)
       .then(offer => {
-      res.render('Users/service-completed', {offer, service} );
+        
+        Service.findById(serviceId).populate("user").then(service=> { 
+          console.log(service)
+          transport.sendMail({
+          to:service.user.email,
+          subject:"Mr wolf",
+          text:"prueba",
+          html:mailTemplate(service.user,`http://localhost:3000/`)
+        })}).then(() => res.render('Users/service-completed', {offer, service} ))
+      
       }).catch(error => {
         console.log(error)
       })
