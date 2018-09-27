@@ -8,14 +8,8 @@ const uploadCloud = require('../config/cloudinary.js');
 const Service = require('../models/Service.js');
 const User = require('../models/User.js');
 const transport = require("../Mailing/transport");
-<<<<<<< HEAD
-const {
-  mailTemplate
-} = require("../Mailing/templates")
-=======
 const {mailTemplate} = require("../Mailing/templates");
 const Rating = require('../models/Rating')
->>>>>>> pablo
 
 router.get("/home", (req, res, next) => {
   res.render("index");
