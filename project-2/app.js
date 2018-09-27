@@ -12,7 +12,7 @@ const path = require('path');
 const session = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const flash = require("connect-flash");
-
+let u = []
 
 mongoose
   .connect('mongodb://localhost/project-2', {
@@ -69,6 +69,7 @@ hbs.registerHelper('role',  function(user, role, options) {
 });
 
 
+
 // default value for title local
 app.locals.title = 'Mr Wolf';
 
@@ -87,9 +88,18 @@ require('./passport')(app);
 
 
 app.use((req,res,next) => {
+  u = [];
+  req.user ? u.push(req.user._id) : u.push("")
   res.locals.user = req.user;
   next();
 }) 
+
+hbs.registerHelper('owner',  function(services, options) {
+  console.log(services.toString() == u[0].toString())
+
+  return (services.toString()  == u[0].toString()) ? options.fn(this): options.inverse(this)
+});
+
 
 const index = require('./routes/index');
 app.use('/', index);
