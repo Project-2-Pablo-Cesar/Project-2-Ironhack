@@ -8,7 +8,8 @@ const uploadCloud = require('../config/cloudinary.js');
 const Service = require('../models/Service.js');
 const User = require('../models/User.js');
 const transport = require("../Mailing/transport");
-const {mailTemplate} = require("../Mailing/templates")
+const {mailTemplate} = require("../Mailing/templates");
+const Rating = require('../models/Rating')
 
 router.get("/home", (req, res, next) => {
   res.render("index");
@@ -155,6 +156,43 @@ router.get("/profile", ensureAuthenticated, (req, res, next) => {
 
 });
 
+
+
+router.post('/profile/:id/edit', ensureAuthenticated, (req, res, next) => {
+  const { name, email, username} = req.body;
+  User.findOneAndUpdate ({'_id': req.params.id}, { $set: { name, email, username }})
+  .then(() => {
+    res.redirect("/profile")
+  })
+ 
+  .catch(next)
+});
+
+
+// router.post('/profile/:id/edit', (req, res, next) => {
+//   const { title,serviceDescription, serviceExpiresDate} = req.body;
+//   console.log("pepe")
+// console.log(req.body)
+//   User.findOneAndUpdate ({'_id': req.params.id}, { $set: { title, serviceDescription, serviceExpiresDate}})
+//   //console.log(req.body)
+//   .then(() => {
+//     res.redirect("/profile")
+//   })
+ 
+//   .catch(next)
+// });
+
+router.post("/profile/:id/delete", ensureAuthenticated, (req, res, next) => {
+  const { userId } = req.body;
+  Service.findByIdAndRemove(userId)
+    .then(deleted => {
+      res.redirect("/profile");
+    })
+    .catch(next);
+});
+
+
+
 router.get("/finished/:id/:id2", ensureAuthenticated, (req, res, next) => {
   let serviceId = req.params.id;
   let offerId = req.params.id2;
@@ -180,6 +218,27 @@ router.get("/finished/:id/:id2", ensureAuthenticated, (req, res, next) => {
     })
   })
 });
+
+router.get("/review/:idUserQueCompra", ensureAuthenticated, (req, res, next) => {
+  let userForReviewID = req.params.idUserquecompra;
+  const user = req.user;
+   
+      User.findById(userForReviewID)
+      .then(userForReview => {
+      res.render('Users/review', {user, userForReview} );
+      }).catch(error => {
+        console.log(error)
+      })
+});
+
+
+router.post("/review/:idUserQueCompra", ensureAuthenticated,(req,res, next) =>{
+  
+})
+
+
+
+
 
 
 module.exports = router;
