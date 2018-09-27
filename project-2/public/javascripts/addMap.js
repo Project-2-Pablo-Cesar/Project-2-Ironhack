@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
       position: center,
       map: map
     });
+    //map.fitBounds(new google.maps.LatLng([center, center]));
     setPosOnForm(center);
   });
-
-  map.fitbounds(marker)
+  
 }, false);

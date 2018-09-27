@@ -40,11 +40,13 @@
           <a class="nav-link" href="/profile">Profile </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/admin/admin-control">Profile admin </a>
-        </li>
-        <li class="nav-item active">
           <a class="nav-link" href="/logout">Log Out </a>
         </li>
+        {{#role user "ADMIN"}}
+          <a class="nav-link active" href="/admin/admin-control">Profile admin </a>
+        </li>
+        </li>
+        {{/role}}
 
         
         {{else }}
@@ -53,11 +55,7 @@
           <a class="nav-link" href="/login">Log In </a>
         </li>
         {{/if}}
-        {{!-- {{#if role user}}
-        <li class="nav-item active">
-          <a class="nav-link" href="/logout">Log Out </a>
-        </li>
-        {{/if}} --}}
+        
       </ul>
     </div>
   </nav>

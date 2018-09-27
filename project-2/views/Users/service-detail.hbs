@@ -29,9 +29,9 @@
       </form>
 
 
- <script src="/javascripts/geolocalize.js"></script>       
-    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
-    <script type="text/javascript" src="/javascripts/addMap.js"></script>
+      <script src="/javascripts/geolocalize.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+      <script type="text/javascript" src="/javascripts/addMap.js"></script>
     </div>
   </div>
 </div>
@@ -40,14 +40,19 @@
 <script type="text/javascript">
   jQuery(function ($) {
     // Google Maps setup
+    const center = new google.maps.LatLng({{ services.location.coordinates.[0] }}, {{ services.location.coordinates.[1] }});
     var googlemap = new google.maps.Map(
       document.getElementById('googlemap'),
       {
-        center: new google.maps.LatLng(44.5403, -78.5463),
-        zoom: 8,
-        
-      }
-    );
+        center,
+    zoom: 8,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+      })
+  let marker = new google.maps.Marker({
+    position: center,
+    map: googlemap
+  });
+    
   });
 </script>
 <div class="container">
@@ -97,4 +102,5 @@
         </div>
          {{/each}}
 
-
+      </div>
+    </div>
