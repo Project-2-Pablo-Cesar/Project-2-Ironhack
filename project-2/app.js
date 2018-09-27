@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+require('dotenv').load()
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
@@ -15,7 +15,7 @@ const flash = require("connect-flash");
 let u = []
 
 mongoose
-  .connect('mongodb://localhost/project-2', {
+  .connect(process.env.DBURL, {
     useNewUrlParser: true
   })
   .then(x => {
