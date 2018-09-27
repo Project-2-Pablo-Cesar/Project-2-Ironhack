@@ -2,6 +2,7 @@
   <h1>{{user.username}}</h1>
   <ul>
       <li>
+          
           {{user.id}}
       </li>
     <li>
@@ -27,9 +28,15 @@
 
             </div>
         </div>
+        <form action="/profile/{{_id}}/delete" method="POST">
+        <input type="hidden" name="userId" value="{{_id}}">
+        <button type="submit">Delete</button>
+        </form>
+        
          {{/each}}
 
 
+{{this._id}}
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUser">
         Editar usuario...
       </button>
@@ -41,7 +48,7 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
-            <form method="POST" action="/admin/users/{{_id}}/edit">
+            <form method="POST" action="/profile/{{user.id}}/edit">
               <label for="username">Username</label>
               <input id="username" type="text" name="username" placeholder={{this.username}}>
 
@@ -63,9 +70,11 @@
           </div>
         </div>
       </div>
+</section>
 
 
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editService">
+
+{{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editService">
         Editar servicio...
       </button>
       <div class="modal fade" id="editService">
@@ -76,10 +85,10 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
-            <form method="POST" action="/admin/service/{{this.id}}/edit">
+            <form method="POST" action="/profile/{{this.id}}/edit">
               <label for="title">Title</label>
               <input id="title" type="text" name="title" placeholder="JonSnow">
-              <p>{{this.id}}</p>
+              <p>{{user}}</p>
               <br><br>
 
               <label for="serviceDescription"> Description </label>
@@ -96,5 +105,4 @@
 
           </div>
         </div>
-      </div>
-</section>
+      </div> --}}

@@ -30,7 +30,7 @@ router.get('/admin-control',hasRole("ADMIN"), (req, res, next) => {
 
   router.post("/services/:id/delete", (req, res, next) => {
     const { serviceId } = req.body;
-    console.log(serviceId)
+    console.log("borra")
     Service.findByIdAndRemove(serviceId)
       .then(deleted => {
         console.log('borra')
@@ -62,31 +62,7 @@ console.log(req.body)
   });
 
 
-  // router.get('/edit/:id', (req, res, next) => {
-  //   let userId = req.params.id;
-  //   User.findById(userId)
-  //   .then(user => {
-  //     res.render('edit',{user});
-  //   }).catch(err => {
-  //     next(err)
-  //   })}else {res.render("list",{
-  //     errorMessage: "You dont have permission to do that"
-  //   })}
-    
-  // });
   
-  // router.post('/edit/:id', (req, res, next) => {
-  //   let userId = req.params.id;
-  //   const{username,role} = req.body
-  //   User.findByIdAndUpdate(userId, {username,role})
-  //   .then(user => {
-  //     res.redirect("/list");
-      
-  //   })
-  //   .catch(err => {
-  //     next(err)
-  //   })
-  // });
 
 
 
