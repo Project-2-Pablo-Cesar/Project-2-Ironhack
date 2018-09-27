@@ -1,0 +1,77 @@
+ {{!--
+<div class="modal fade" id="myNewModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <h4 class="modal-title">Nuevo usario</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <form method="POST" action="/signup">
+        <label for="username">Username</label>
+        <input id="username" type="text" name="username" placeholder="JonSnow">
+
+        <br><br>
+
+        <label for="email"> Email </label>
+        <input type="email" name="email" id="email" placeholder="direction@domain.topleveldomain">
+        <br><br>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" placeholder="Your password">
+
+        <input type="submit" value="SAVE">
+      </form>
+
+    </div>
+  </div>
+</div> --}}
+
+
+<section>
+  <h1>Manage Users</h1>
+  {{#each users}}
+  <ul>
+    <li>
+      <h4>{{username}}</h4>
+      <p>Role: {{this.role}}</p>
+      <p>{{this.id}}</p>
+      <form action="/admin/users/{{_id}}/delete" method="POST">
+        <input type="hidden" name="userId" value="{{_id}}">
+        <button type="submit">Delete</button>
+        </form>
+      
+
+    </li>
+  </ul>
+  {{/each}}
+  <br>
+  <br>
+  <br> {{services.[1]}}
+
+  <h1>Manage services</h1>
+  {{#each services}}
+  <ul>
+    <li>
+
+      <h4>{{this.title}}</h4>
+      <p> {{this.user}}</p>
+
+      <form action="/admin/services/{{_id}}/delete" method="POST">
+        <input type="hidden" name="userId" value="{{_id}}">
+        <button type="submit">Delete</button>
+      </form>
+      
+
+    </li>
+  </ul>
+  {{/each}}
+
+
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myNewModal">
+    Crear nuevo usuario...
+  </button>
+</section>

@@ -1,0 +1,108 @@
+<section>
+  <h1>{{user.username}}</h1>
+  <ul>
+      <li>
+          
+          {{user.id}}
+      </li>
+    <li>
+      <h5>Email: {{user.email}}</h5>
+    </li>
+  </ul>
+  {{#each services}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="event">
+                <div class="img">
+                    <img alt="Event Image"src="{{this.picPath}}" >
+                </div>
+                <div class="desc">
+                    <a href="/detail/{{this.id}}"><h3>{{this.title}}</h3></a>
+                    <p>{{this.serviceDescription}}</p>
+                </div>
+                <div class="date float-xs-right">
+                    <div class="day">25</div>
+                    <div class="month">Jul</div>
+                </div>
+
+            </div>
+        </div>
+        <form action="/profile/{{_id}}/delete" method="POST">
+        <input type="hidden" name="userId" value="{{_id}}">
+        <button type="submit">Delete</button>
+        </form>
+        
+         {{/each}}
+
+
+{{this._id}}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUser">
+        Editar usuario...
+      </button>
+ <div class="modal fade" id="editUser">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Editar usuario</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <form method="POST" action="/profile/{{user.id}}/edit">
+              <label for="username">Username</label>
+              <input id="username" type="text" name="username" placeholder={{this.username}}>
+
+              <br><br>
+              
+              <p>{{this.id}}</p>
+              <label for="email"> Email </label>
+              <input type="email" name="email" id="email" placeholder="direction@domain.topleveldomain">
+              <br><br>
+
+              <label for="name">Name</label>
+              <input id="name" type="name" name="name" placeholder="Your password">
+
+
+
+              <input type="submit" value="SAVE">
+            </form>
+
+          </div>
+        </div>
+      </div>
+</section>
+
+
+
+{{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editService">
+        Editar servicio...
+      </button>
+      <div class="modal fade" id="editService">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Editar servicio</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <form method="POST" action="/profile/{{this.id}}/edit">
+              <label for="title">Title</label>
+              <input id="title" type="text" name="title" placeholder="JonSnow">
+              <p>{{user}}</p>
+              <br><br>
+
+              <label for="serviceDescription"> Description </label>
+              <input type="serviceDescription" name="serviceDescription" id="serviceDescription" placeholder="serviceDescription">
+              <br><br>
+
+              <label for="serviceExpiresDate">Date </label>
+              <input id="serviceExpiresDate" type="date" name="serviceExpiresDate" placeholder="serviceExpiresDate">
+
+
+
+              <input type="submit" value="SAVE">
+            </form>
+
+          </div>
+        </div>
+      </div> --}}
