@@ -30,8 +30,10 @@ router.get('/admin-control',hasRole("ADMIN"), (req, res, next) => {
 
   router.post("/services/:id/delete", (req, res, next) => {
     const { serviceId } = req.body;
-    User.findByIdAndRemove(serviceId)
+    console.log(serviceId)
+    Service.findByIdAndRemove(serviceId)
       .then(deleted => {
+        console.log('borra')
         res.redirect("/admin/admin-control");
       })
       .catch(next);
@@ -49,7 +51,9 @@ router.get('/admin-control',hasRole("ADMIN"), (req, res, next) => {
 
   router.post('/service/:id/edit', (req, res, next) => {
     const { title,serviceDescription, serviceExpiresDate} = req.body;
+console.log(req.body)
     User.findOneAndUpdate ({'_id': req.params.id}, { $set: { title, serviceDescription, serviceExpiresDate}})
+    //console.log(req.body)
     .then(() => {
       res.redirect("/admin/admin-control")
     })
