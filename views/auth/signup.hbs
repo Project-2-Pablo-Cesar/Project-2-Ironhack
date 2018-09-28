@@ -1,29 +1,36 @@
-<h2>Signup</h2>
+<body id="LoginForm">
+  <div class="container">
 
-<form action="/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
+    <div class="login-form">
+      <div class="main-div">
+        <div class="panel">
+          <h2>Regístrate</h2>
+          <p>Introduce un usuario, un email y una contraseña</p>
+        </div>
+        <form action="/signup" method="POST" id="form-container">
+          <div class="form-group">
+            <input type="text" class="form-control" id="inputEmail" placeholder="Usuario" name="username">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" id="inputPassword" placeholder="Email" name="email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña" name="password">
+          </div>
+          {{#if message }}
+          <div class="error-message">{{ message }}</div>
+          {{/if}}
 
-  <br><br>
+          <div class="forgot">
+            ¿Ya tienes una cuenta?
+            <a href="/login">INICIA SESIÓN</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Regístrate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
 
-  <label for="email"> Email </label>
-    <input type="email" name="email" id="email"
-      placeholder="direction@domain.topleveldomain">
-      <br><br>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <br><br>
-
-  <button>Create account</button>
-
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/login">Login</a>
-  </p>
-</form>
+</body>

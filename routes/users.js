@@ -137,15 +137,6 @@ router.get("/list", ensureAuthenticated, (req, res, next) => {
     })
 });
 
-
-
-
-router.get("/search", ensureAuthenticated, (req, res, next) => {
-  res.render("Users/services-search");
-});
-
-
-
 router.get("/profile", ensureAuthenticated, (req, res, next) => {
   let userid = req.user.id
   Service.find({
@@ -157,11 +148,7 @@ router.get("/profile", ensureAuthenticated, (req, res, next) => {
       });
 
     })
-
-
 });
-
-
 
 router.post('/profile/:id/edit', ensureAuthenticated, (req, res, next) => {
   const { name, email, username} = req.body;
@@ -195,8 +182,6 @@ router.post("/profile/:id/delete", ensureAuthenticated, (req, res, next) => {
     })
     .catch(next);
 });
-
-
 
 router.get("/finished/:id/:id2", ensureAuthenticated, (req, res, next) => {
   let serviceId = req.params.id;

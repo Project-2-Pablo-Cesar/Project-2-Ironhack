@@ -29,30 +29,28 @@
         <li class="nav-item active">
           <a class="nav-link" href="/service-creation">Crea tu servicio</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/search">Búsqueda de servicios</a>
-        </li>
+        
 
       </ul>
       <ul class="navbar-nav ml-md-auto">
         {{#if user}}
-        <li class="nav-item active">
-          <a class="nav-link" href="/profile">Profile </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/logout">Log Out </a>
-        </li>
         {{#role user "ADMIN"}}
-          <a class="nav-link active" href="/admin/admin-control">Profile admin </a>
+          <a class="nav-link active" href="/admin/admin-control">Admin</a>
         </li>
         </li>
         {{/role}}
-
+        <li class="nav-item active">
+          <a class="nav-link" href="/profile">Accede a tu Perfil </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/logout">Cerrar sesión</a>
+        </li>
         
+
         {{else }}
 
         <li class="nav-item active">
-          <a class="nav-link" href="/login">Log In </a>
+          <a class="nav-link" href="/login">Iniciar sesión</a>
         </li>
         {{/if}}
         

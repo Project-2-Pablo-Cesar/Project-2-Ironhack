@@ -1,6 +1,10 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; }
 
 a {
   color: #00B7FF; }
@@ -87,5 +91,127 @@ a {
 
 .my-form .form-control {
   border-radius: 0; }
+
+.main-index {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 30px;
+  height: 400px;
+  background-image: url(../images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  border: 3px solid white;
+  border-radius: 15px;
+  font-size: 1.3em;
+  width: 1200px; }
+
+.text-div {
+  margin-top: 120px;
+  width: 700px;
+  margin-left: 400px; }
+
+.secbox {
+  margin-right: 150px; }
+
+.indxbox {
+  padding-top: 15px;
+  background-color: rgba(53, 58, 63, 0.5);
+  color: white;
+  border: 3px solid white;
+  border-radius: 15px; }
+
+.indxbox p {
+  font-size: 1.1em; }
+
+.indxbox h2 {
+  font-size: 2em;
+  font-weight: bolder; }
+
+.navbar {
+  font-size: 1.2em; }
+
+.service-box {
+  background-color: whitesmoke; }
+
+body#LoginForm {
+  background-image: url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 10px;
+  padding-top: 320px; }
+
+.form-heading {
+  color: #fff;
+  font-size: 23px; }
+
+.panel h2 {
+  color: #444444;
+  font-size: 18px;
+  margin: 0 0 8px 0; }
+
+.panel p {
+  color: #777777;
+  font-size: 14px;
+  margin-bottom: 30px;
+  line-height: 24px; }
+
+.login-form .form-control {
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px; }
+
+.main-div {
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 2px;
+  margin: -150px auto 250px;
+  max-width: 38%;
+  padding: 50px 70px 70px 71px; }
+
+.login-form .form-group {
+  margin-bottom: 10px; }
+
+.login-form {
+  text-align: center; }
+
+.forgot a {
+  color: #777777;
+  font-size: 14px;
+  text-decoration: underline; }
+
+.login-form .btn.btn-primary {
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0; }
+
+.forgot {
+  text-align: left;
+  margin-bottom: 30px; }
+
+.botto-text {
+  color: #ffffff;
+  font-size: 14px;
+  margin: auto; }
+
+.login-form .btn.btn-primary.reset {
+  background: #ff9900 none repeat scroll 0 0; }
+
+.back {
+  text-align: left;
+  margin-top: 10px; }
+
+.back a {
+  color: #444444;
+  font-size: 13px;
+  text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */
