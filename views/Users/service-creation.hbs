@@ -1,76 +1,84 @@
-
-<form method="POST" action="/service-creation" enctype="multipart/form-data">
-  <p>Tipo de servicio<input type="text" name="title" placeholder="name"></p>
-  <p>Descripción<input type="text" name="serviceDescription" placeholder="description" ></p>
-  <p>Photo<input type="file" name="photo"></p>
-  <input  type= "hidden" name ="type" value= "original"> 
- 
-
-    <p class="fallbackLabel">Fecha del servicio</p>
-    <div class="fallbackDatePicker">
-      <span>
-        <label for="day">Day:</label>
-        <select id="day" name="day">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option> 
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-          <option>13</option>
-          <option>14</option>
-          <option>15</option>
-          <option>16</option>
-          <option>17</option>
-          <option>18</option>
-          <option>19</option>
-          <option>20</option>
-          <option>21</option>
-          <option>22</option>
-          <option>23</option>
-          <option>24</option>
-          <option>25</option>
-          <option>26</option>
-          <option>27</option>
-          <option>28</option>
-          <option>29</option>
-          <option>30</option>
-          <option>31</option>
-        </select>
-      </span>
-      <span>
-        <label for="month">Month:</label>
-        <select id="month" name="month">
-          <option>JAN</option>
-          <option>FEB</option>
-          <option>MAR</option>
-          <option>APR</option>
-          <option>MAY</option>
-          <option>JUN</option>
-          <option>JUL</option>
-          <option>AUG</option>
-          <option>SEP</option>
-          <option>OCT</option>
-          <option>NOV</option>
-          <option>DEC</option>
-        </select>
-      </span>
-      
+<div class="row list-head">
+    <div class="col-lg-6 offset-lg-3">
+        <br>
+        <h1>Crea tu oferta.</h1>
+        <br>
+        <h4>Introduce el título de tu oferta, descripción, para cuándo necesitas el intercambio, y también el lugar.</h4>
+        <br>
+        <br>
     </div>
-
-
-
-  <label>Address</label>
-  <input id="lat-pos" type="hidden" name="latitude" placeholder="Latitude">
-  <input id="lng-pos" type="hidden" name="longitude" placeholder="Longitude">
-  <input type="submit" value="SAVE">
-</form>
+</div>
+<div class="row">
+  <form method="POST" action="/service-creation" enctype="multipart/form-data" class="row">
+    <div class="col-md-4 offset-md-2">Título de tu oferta  <input type="text" name="title" placeholder="name"></div>
+    <div class="col-md-4">Foto<input type="file" name="photo"></div>
+    <input  type= "hidden" name ="type" value= "original"> 
+   
+    <div class="col-md-4 offset-md-2">Descripción            <input class="descriptionbox" type="text" name="serviceDescription" placeholder="descripción de la oferta" ></div>
+    
+  
+      <p class="fallbackLabel">Fecha del servicio</p>
+      <div class="fallbackDatePicker">
+        <span>
+          <select id="day" name="day">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option> 
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+            <option>24</option>
+            <option>25</option>
+            <option>26</option>
+            <option>27</option>
+            <option>28</option>
+            <option>29</option>
+            <option>30</option>
+            <option>31</option>
+          </select>
+        </span>
+        <span>
+          <label for="month">Mes</label>
+          <select id="month" name="month">
+            <option>JAN</option>
+            <option>FEB</option>
+            <option>MAR</option>
+            <option>APR</option>
+            <option>MAY</option>
+            <option>JUN</option>
+            <option>JUL</option>
+            <option>AUG</option>
+            <option>SEP</option>
+            <option>OCT</option>
+            <option>NOV</option>
+            <option>DEC</option>
+          </select>
+        </span>
+        
+      </div>
+  
+    <input id="lat-pos" type="hidden" name="latitude" placeholder="Latitude">
+    <input id="lng-pos" type="hidden" name="longitude" placeholder="Longitude">
+    <input type="submit" value="SAVE" >
+  </form>
+</div>
 
   <div id="map"></div>
 

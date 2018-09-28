@@ -1,16 +1,29 @@
-<h1>List of Services</h1>
- {{#each services}}
+<div class="row list-head">
+    <div class="col-lg-6 offset-lg-3">
+        <br>
+        <h1>Lista de servicios.</h1>
+        <br>
+        <h4>Estos son todos las ofertas de servicio activas en este momento.</h4>
+        <br>
+        <br>
+    </div>
+</div>
+{{#each services}}
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="event service-box">
                 <div class="img">
-                    <img alt="Event Image"src="{{this.picPath}}" >
+                    <img alt="Event Image" src="{{this.picPath}}">
                 </div>
                 <div class="desc">
-                    <a href="/detail/{{this.id}}"><h3>{{this.title}}</h3></a>
+                    <a href="/detail/{{this.id}}">
+                        <h3>{{this.title}}</h3>
+                    </a>
                     <p>{{this.serviceDescription}}</p>
-                  <a href="/detail/{{this.id}}"><h6>¿Qué ofreces a cambio?</h6></a>
+                    <a href="/detail/{{this.id}}">
+                        <h6>¿Qué ofreces a cambio?</h6>
+                    </a>
                 </div>
                 <div class="date float-xs-right">
                     <div class="day">{{this.day}}</div>
@@ -19,4 +32,4 @@
 
             </div>
         </div>
-         {{/each}}
+        {{/each}}

@@ -1,13 +1,42 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover; }
+#home {
+  margin-top: 70px; }
+
+#f {
+  padding-top: 150px; }
+
+.list-head {
+  margin-top: 70px; }
 
 a {
-  color: #00B7FF; }
+  color: #f85c37;
+  word-wrap: break-word;
+  -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+  transition: color 0.1s ease-in, background 0.1s ease-in; }
+
+a:hover,
+a:focus {
+  color: #7b7b7b;
+  text-decoration: none;
+  outline: 0; }
+
+a:before,
+a:after {
+  -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+  transition: color 0.1s ease-in, background 0.1s ease-in; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
 
 #map {
   height: 300px; }
@@ -18,12 +47,13 @@ a {
   height: 150px;
   overflow: hidden;
   margin-bottom: 20px;
-  border: 1px solid #607D8D;
+  border: 2px solid #607D8D;
+  border-radius: 10px;
   vertical-align: middle; }
 
 .event .date {
   display: inline-block;
-  width: 150px;
+  width: 155px;
   height: 150px;
   text-align: center;
   background-color: #607D8D;
@@ -35,7 +65,8 @@ a {
 
 .event .date .month {
   font-size: 30px;
-  color: #fff; }
+  color: #fff;
+  margin-top: -15px; }
 
 .event .img {
   display: inline-block;
@@ -51,27 +82,21 @@ a {
 
 .event .desc {
   display: inline-block;
-  width: 419px;
+  width: 57%;
   padding-left: 20px;
   font-size: 15px;
   overflow: hidden;
   vertical-align: middle; }
 
-@media screen and (max-width: 640px) {
-  .event .desc h3 {
-    font-size: 15px; }
-  .event {
-    height: 100px; }
-  .event .date {
-    width: 100px;
-    height: 100px; }
-  .event .date .day {
-    font-size: 20px; }
-  .event .img {
-    width: 100px;
-    height: 100px; }
-  .event .social {
-    font-size: 16px; } }
+.event .desc a h6 {
+  color: #f85c37;
+  word-wrap: break-word; }
+
+.event .desc h3 {
+  font-weight: bolder; }
+
+.event .desc p {
+  font-size: 1.3em; }
 
 @media screen and (max-width: 480px) {
   .event .img {
@@ -130,6 +155,9 @@ a {
 
 .navbar {
   font-size: 1.2em; }
+
+.navbar img {
+  margin-right: 15px; }
 
 .service-box {
   background-color: whitesmoke; }
@@ -204,14 +232,5 @@ body#LoginForm {
 
 .login-form .btn.btn-primary.reset {
   background: #ff9900 none repeat scroll 0 0; }
-
-.back {
-  text-align: left;
-  margin-top: 10px; }
-
-.back a {
-  color: #444444;
-  font-size: 13px;
-  text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */

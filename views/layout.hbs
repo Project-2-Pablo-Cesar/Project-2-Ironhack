@@ -12,15 +12,18 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+  <link href="css/main.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="/stylesheets/style.css" />
-
+  <script src="javascripts/smoothscroll.js"></script>
 </head>
 
 <body>
 
   <nav class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top">
-
-    <a class="navbar-brand" href="/home">Mr Wolf</a>
+    <a href="/home"><img src="/images/logo.png" alt="logo"></a>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="navbar-nav">
         <li class="nav-item active">
@@ -29,13 +32,13 @@
         <li class="nav-item active">
           <a class="nav-link" href="/service-creation">Crea tu servicio</a>
         </li>
-        
+
 
       </ul>
       <ul class="navbar-nav ml-md-auto">
         {{#if user}}
         {{#role user "ADMIN"}}
-          <a class="nav-link active" href="/admin/admin-control">Admin</a>
+        <a class="nav-link active" href="/admin/admin-control">Admin</a>
         </li>
         </li>
         {{/role}}
@@ -45,7 +48,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="/logout">Cerrar sesión</a>
         </li>
-        
+
 
         {{else }}
 
@@ -53,7 +56,7 @@
           <a class="nav-link" href="/login">Iniciar sesión</a>
         </li>
         {{/if}}
-        
+
       </ul>
     </div>
   </nav>
