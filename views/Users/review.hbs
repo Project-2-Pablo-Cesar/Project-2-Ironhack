@@ -1,15 +1,25 @@
-<h2> Add a comment Mr {{user.username}}</h2>
+<div class="list-head-rev container col-md-8 offset-md-2">
 
+<div class="row"><h2> Como ha ido tu experiencia con {{user.username}} ?</h2></div>
+<div class="row">
 <form action="/review/{{userForReview.id}}" method="post">
-  <label for="title">Title:</label>
+  <label for="title">Defínela con una palabra </label>
   <input type="text" name="title"><br>
 
-  <label for="content">Description:</label>
+  <label for="content">Deja un comentario </label>
   <input type="text" name="content"><br>
+  <span>
+          <label for="rating">Puntua tu experiencia</label>
+          <select id="rating" name="rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </span>
 
-  <label for="rating">Rate:</label>
-  <input type="number" name="rating"><br>
-
-  <button type="submit">Send</button>
+  <button type="submit">Enviar</button>
 </form> 
-
+</div>
+</div>
