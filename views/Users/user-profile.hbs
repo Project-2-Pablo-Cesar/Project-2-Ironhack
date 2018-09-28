@@ -11,6 +11,12 @@
       <li>
         <h5>Email: {{user.email}}</h5>
       </li>
+      <li>
+         <div>
+          <h5>Nota media del usuario</h5>
+          <h3>{{avg}} <img src="images/star-icon.png" alt="" height="42" width="42"></h3>
+        </div>
+      </li>
     </ul>
   </div>
 
@@ -87,24 +93,21 @@
 
       <div>
         <h1>Reviews recibidas</h1>
+        <hr>
         <br>
         <br>
         <div>
           {{#each rating}}
-          <h1>Service:{{this.title}}</h1><br>
-          <h3>Comment:{{this.content}}</h3>
-          <p><i>"{{this.authorId.username}}"</i></p><br>
-          <h1>rating:{{this.rating}}</h1><br>
+          <h1>- {{this.title}} -</h1>
+          <h3>{{this.content}}</h3>
+          <br>
+          <h5><i>"{{this.authorId.username}}"</i></h5>
+          <h3>{{this.rating}} <img src="images/star-icon.png" alt="" height="42" width="42"></h3><br>
+          <hr>
           {{/each}}
 
 
         </div>
-        <div>
-          <h2>Nota media</h2>
-          <br>
-          <br>
-          <h1>{{avg}}</h1>
-        </div>
-
+        
       </div>
     </div>
