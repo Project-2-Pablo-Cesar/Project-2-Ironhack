@@ -176,19 +176,6 @@ router.post('/profile/:id/edit', ensureAuthenticated, (req, res, next) => {
 });
 
 
-// router.post('/profile/:id/edit', (req, res, next) => {
-//   const { title,serviceDescription, serviceExpiresDate} = req.body;
-//   console.log("pepe")
-// console.log(req.body)
-//   User.findOneAndUpdate ({'_id': req.params.id}, { $set: { title, serviceDescription, serviceExpiresDate}})
-//   //console.log(req.body)
-//   .then(() => {
-//     res.redirect("/profile")
-//   })
- 
-//   .catch(next)
-// });
-
 router.post("/profile/:id/delete", ensureAuthenticated, (req, res, next) => {
   const { userId } = req.body;
   Service.findByIdAndRemove(userId)
@@ -214,14 +201,10 @@ let mail = {
       to: user.email,
       subject: obj.subject,
       text: obj.text,
-      html: mailTemplate(user, `http://localhost:3000/review/${ref.id}`)
+      html: mailTemplate(user, `https://mrwolf.herokuapp.com/review/${ref.id}`)
     })
   }
-  // Service.find()
-  // .then( services => {
-  //   //res.render('coffee/list', {services,restStr: JSON.stringify(services)
-  //   })
-
+  
   Service.findByIdAndUpdate(serviceId, {
       status: "closed"
     }, {
@@ -243,8 +226,7 @@ let mail = {
     .then(() => res.render('Users/service-completed', {
       offerGlobal,
       serviceGlobal,
-      // services,
-      // restStr: JSON.stringify(services)
+  
     }))
     .catch(error => {
       console.log(error)
@@ -268,8 +250,7 @@ router.get("/review/:id", ensureAuthenticated, (req, res, next) => {
 
 
 router.post("/review/:id", ensureAuthenticated,(req,res, next) =>{
-  //console.log(req.body)
-  //console.log(req.params.id)
+
   const {title,content,rating} = req.body;
   const authorId = req.user._id
   const destinationComment = req.params.id

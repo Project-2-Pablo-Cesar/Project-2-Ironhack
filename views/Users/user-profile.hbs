@@ -1,139 +1,110 @@
-<section>
+<div class="container profile">
   <div>
-  <h1>Welcome to your profile Mr ´{{user.username}}´</h1>
-  
-  <ul>
-    <li>
-     <h5> Username: {{user.username}} </h5>
-    </li>
-    <li>
-      <h5>Name: {{user.name}}</h5>
-    </li>
-     
-    <li>
-      <h5>Email: {{user.email}}</h5>
-    </li>
-  </ul>
+    <h1>Perfil de {{user.username}}</h1>
+    <ul>
+      <li>
+        <h5> Username: {{user.username}} </h5>
+      </li>
+      <li>
+        <h5> name: {{user.name}} </h5>
+      </li>
+      <li>
+        <h5>Email: {{user.email}}</h5>
+      </li>
+    </ul>
   </div>
 
   <div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUser">
-        Editar usuario...
-      </button>
- <div class="modal fade" id="editUser">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Editar usuario</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <form method="POST" action="/profile/{{user.id}}/edit">
-              <label for="username">Username</label>
-              <input id="username" type="text" name="username" placeholder={{this.username}}>
-
-              <br><br>
-              
-              <p>{{this.id}}</p>
-              <label for="email"> Email </label>
-              <input type="email" name="email" id="email" placeholder="direction@domain.topleveldomain">
-              <br><br>
-
-              <label for="name">Name</label>
-              <input id="name" type="name" name="name" placeholder="Your name">
-
-
-
-              <input type="submit" value="SAVE">
-            </form>
-
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUser">
+      Edita tus datos
+    </button>
+    <div class="modal fade" id="editUser">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edita tus datos</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
+
+          <form method="POST" action="/profile/{{user.id}}/edit">
+            <label for="username">Nombre de usuario</label>
+            <input id="username" type="text" name="username" placeholder={{this.username}}>
+
+            <br><br>
+
+            <p>{{this.id}}</p>
+            <label for="email"> Email </label>
+            <input type="email" name="email" id="email" placeholder="modifica aquí tu mail">
+            <br><br>
+
+            <label for="name">Añade un alias a la cuenta</label>
+            <input id="name" type="name" name="name" placeholder="tu nombre">
+
+
+
+            <input type="submit" value="SAVE">
+          </form>
+
         </div>
       </div>
-</div>
+    </div>
+  </div>
 
-<div>
-  <h1>Your services</h1>
-  {{#each services}}
-<div class="container">
-    <div class="row">
+  <div>
+    <h1>Your services</h1>
+    <br>
+    <br>
+    {{#each services}}
+    <div class="container">
+      <div class="row">
         <div class="col-md-8 offset-md-2">
-            <div class="event  service-box">
-                <div class="img">
-                    <img alt="Event Image"src="{{this.picPath}}" >
-                </div>
-                <div class="desc">
-                    <a href="/detail/{{this.id}}"><h3>{{this.title}}</h3></a>
-                    <p>{{this.serviceDescription}}</p>
-                </div>
-                <div class="date float-xs-right">
-                    <div class="day">{{this.day}}</div>
-                    <div class="month">{{this.month}}</div>
-                </div>
-
+          <div class="event  service-box">
+            <div class="img">
+              <img alt="Event Image" src="{{this.picPath}}">
             </div>
+            <div class="desc">
+              <a href="/detail/{{this.id}}">
+                <h3>{{this.title}}</h3>
+              </a>
+              <p>{{this.serviceDescription}}</p>
+            </div>
+            <div class="date float-xs-right">
+              <div class="day">{{this.day}}</div>
+              <div class="month">{{this.month}}</div>
+            </div>
+
+          </div>
         </div>
         <form action="/profile/{{_id}}/delete" method="POST">
-        <input type="hidden" name="userId" value="{{_id}}">
-        <button type="submit">Delete</button>
+          <input type="hidden" name="userId" value="{{_id}}">
+          <button type="submit">Delete</button>
         </form>
-        
-         {{/each}}
 
-         </div>
-
-
-<div>
-  <h1>People commenting about you</h1>
-<div>
-      {{#each rating}}
-<h1>Service:{{this.title}}</h1><br>
-<h3>Comment:{{this.content}}</h3>
-<p><i>"{{this.authorId.username}}"</i></p><br>
-<h1>rating:{{this.rating}}</h1><br>
-      {{/each}}
-
+        {{/each}}
 
       </div>
-    <div>
-      <h2>rating average</h2>
-      <h1>{{avg}}</h1>
-      </div>
-
-   </div>   
-</section>
 
 
-
-{{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editService">
-        Editar servicio...
-      </button>
-      <div class="modal fade" id="editService">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Editar servicio</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <form method="POST" action="/profile/{{this.id}}/edit">
-              <label for="title">Title</label>
-              <input id="title" type="text" name="title" placeholder="JonSnow">
-              <p>{{user}}</p>
-              <br><br>
-
-              <label for="serviceDescription"> Description </label>
-              <input type="serviceDescription" name="serviceDescription" id="serviceDescription" placeholder="serviceDescription">
-              <br><br>
-
-              <label for="serviceExpiresDate">Date </label>
-              <input id="serviceExpiresDate" type="date" name="serviceExpiresDate" placeholder="serviceExpiresDate">
+      <div>
+        <h1>Reviews recibidas</h1>
+        <br>
+        <br>
+        <div>
+          {{#each rating}}
+          <h1>Service:{{this.title}}</h1><br>
+          <h3>Comment:{{this.content}}</h3>
+          <p><i>"{{this.authorId.username}}"</i></p><br>
+          <h1>rating:{{this.rating}}</h1><br>
+          {{/each}}
 
 
-
-              <input type="submit" value="SAVE">
-            </form>
-
-          </div>
         </div>
-      </div> --}}
+        <div>
+          <h2>Nota media</h2>
+          <br>
+          <br>
+          <h1>{{avg}}</h1>
+        </div>
+
+      </div>
+    </div>

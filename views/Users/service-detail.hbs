@@ -15,8 +15,7 @@
         <p>Descripción<input type="text" name="serviceDescription" placeholder="description"></p>
         <p>Photo<input type="file" name="photo"></p>
 
-        {{!-- <p>Until <input type="date" name="serviceExpiresDate" id="serviceExpiresDate"></p>
-        <label>Address</label> --}}<p class="fallbackLabel">Fecha del servicio</p>
+        <p class="fallbackLabel">Fecha del servicio</p>
     <div class="fallbackDatePicker">
       <span>
         <label for="day">Day:</label>
@@ -111,7 +110,9 @@
     
   });
 </script>
+
 <div class="container">
+  <br>
   <div>
     <h1>Información del servicio</h1>
   </div>
@@ -129,13 +130,19 @@
     </div>
   </div>
 </div>
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<div class="row list-head">
+    <div class="col-lg-6 offset-lg-1">
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
   Te ofrezco a cambio...
 </button>
-
+<br>
+<br>
+</div>
+<div class="col-lg-6 offset-lg-3">
 <h2>Han ofrecido..</h2>
 
+</div>
+</div>
 {{#each offers}}
 <div class="container">
     <div class="row">
