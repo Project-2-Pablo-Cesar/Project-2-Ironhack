@@ -37,6 +37,8 @@
 
 
 {{this._id}}
+
+<div>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUser">
         Editar usuario...
       </button>
@@ -69,6 +71,21 @@
 
           </div>
         </div>
+      </div>
+</div>
+  
+<div>
+      {{#each rating}}
+<h1>title:{{this.title}}</h1><br>
+<h3>content:{{this.content}}</h3><br>
+<p>autor:{{this.authorId.username}}</p><br>
+<h1>rating:{{this.rating}}</h1><br>
+      {{/each}}
+
+
+      </div>
+    <div>
+      <h1>{{avg}}</h1>
       </div>
 </section>
 

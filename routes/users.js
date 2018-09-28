@@ -25,12 +25,13 @@ router.get("/service-creation", ensureAuthenticated, (req, res, next) => {
 
 
 router.post('/service-creation', uploadCloud.single('photo'), (req, res, next) => {
-  console.log('pepe')
+  console.log(req.body)
 
   const {
     title,
     serviceDescription,
-    serviceExpiresDate,
+    day,
+    month,
     latitude,
     type,
     longitude,
@@ -45,7 +46,8 @@ router.post('/service-creation', uploadCloud.single('photo'), (req, res, next) =
     title,
     serviceDescription,
     user,
-    serviceExpiresDate,
+    day,
+    month,
     picPath,
     picName,
     type,
@@ -56,6 +58,7 @@ router.post('/service-creation', uploadCloud.single('photo'), (req, res, next) =
   })
   newService.save()
     .then(service => {
+      
 
       res.redirect('/')
     })
@@ -91,7 +94,8 @@ router.post('/detail/:id', uploadCloud.single('photo'), (req, res, next) => {
   const {
     title,
     serviceDescription,
-    serviceExpiresDate,
+    day,
+    month,
     latitude,
     type,
     longitude,
@@ -104,7 +108,8 @@ router.post('/detail/:id', uploadCloud.single('photo'), (req, res, next) => {
     title,
     serviceDescription,
     user,
-    serviceExpiresDate,
+    day,
+    month,
     picPath,
     picName,
     type,
@@ -143,12 +148,22 @@ router.get("/profile", ensureAuthenticated, (req, res, next) => {
       user: userid
     })
     .then(services => {
-      res.render("Users/user-profile", {
-        services
-      });
+      Rating.find({
+        destinationComment : userid
+      })
+
+      .populate("authorId")
+      .then(rating =>{
+        console.log(rating)
+        let sum = 0;
+        rating.forEach(e => sum+=e.rating);
+        const avg= sum/rating.length;
+      res.render("Users/user-profile", {services, rating, avg});
 
     })
-});
+})
+
+})
 
 router.post('/profile/:id/edit', ensureAuthenticated, (req, res, next) => {
   const { name, email, username} = req.body;
@@ -202,6 +217,10 @@ let mail = {
       html: mailTemplate(user, `http://localhost:3000/review/${ref.id}`)
     })
   }
+  // Service.find()
+  // .then( services => {
+  //   //res.render('coffee/list', {services,restStr: JSON.stringify(services)
+  //   })
 
   Service.findByIdAndUpdate(serviceId, {
       status: "closed"
@@ -223,7 +242,9 @@ let mail = {
     })
     .then(() => res.render('Users/service-completed', {
       offerGlobal,
-      serviceGlobal
+      serviceGlobal,
+      // services,
+      // restStr: JSON.stringify(services)
     }))
     .catch(error => {
       console.log(error)
@@ -232,8 +253,9 @@ let mail = {
 
 });
 
-router.get("/review/:idUserQueCompra", ensureAuthenticated, (req, res, next) => {
-  let userForReviewID = req.params.idUserquecompra;
+router.get("/review/:id", ensureAuthenticated, (req, res, next) => {
+  let userForReviewID = req.params.id;
+  console.log(userForReviewID)
   const user = req.user;
    
       User.findById(userForReviewID)
@@ -245,10 +267,29 @@ router.get("/review/:idUserQueCompra", ensureAuthenticated, (req, res, next) => 
 });
 
 
-router.post("/review/:idUserQueCompra", ensureAuthenticated,(req,res, next) =>{
-  
+router.post("/review/:id", ensureAuthenticated,(req,res, next) =>{
+  //console.log(req.body)
+  //console.log(req.params.id)
+  const {title,content,rating} = req.body;
+  const authorId = req.user._id
+  const destinationComment = req.params.id
+  console.log(req.user.username, req.user._id);
+  console.log(destinationComment);
+  const newRating = new Rating({
+    title,
+    content,
+    rating,
+    authorId,
+    destinationComment
 })
-
+newRating.save()
+.then(service => {
+  res.redirect("/")
+})
+ .catch(error => {
+  console.log(error)
+})
+});
 
 
 
