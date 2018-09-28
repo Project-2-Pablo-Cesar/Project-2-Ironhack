@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
       services.forEach(rest => {
         new google.maps.Marker({
           position: {
-            lat:rest.location.coordinates[0],
-            lng:rest.location.coordinates[1]
+            lat:services.location.coordinates[0],
+            lng:services.location.coordinates[1]
           },
           map: map,
           title: rest.name

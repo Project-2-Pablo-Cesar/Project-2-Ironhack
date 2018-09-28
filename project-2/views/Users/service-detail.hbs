@@ -15,8 +15,64 @@
         <p>Descripción<input type="text" name="serviceDescription" placeholder="description"></p>
         <p>Photo<input type="file" name="photo"></p>
 
-        <p>Until <input type="date" name="serviceExpiresDate" id="serviceExpiresDate"></p>
-        <label>Address</label>
+        {{!-- <p>Until <input type="date" name="serviceExpiresDate" id="serviceExpiresDate"></p>
+        <label>Address</label> --}}<p class="fallbackLabel">Fecha del servicio</p>
+    <div class="fallbackDatePicker">
+      <span>
+        <label for="day">Day:</label>
+        <select id="day" name="day">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option> 
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+          <option>13</option>
+          <option>14</option>
+          <option>15</option>
+          <option>16</option>
+          <option>17</option>
+          <option>18</option>
+          <option>19</option>
+          <option>20</option>
+          <option>21</option>
+          <option>22</option>
+          <option>23</option>
+          <option>24</option>
+          <option>25</option>
+          <option>26</option>
+          <option>27</option>
+          <option>28</option>
+          <option>29</option>
+          <option>30</option>
+          <option>31</option>
+        </select>
+      </span>
+      <span>
+        <label for="month">Month:</label>
+        <select id="month" name="month">
+          <option>JAN</option>
+          <option>FEB</option>
+          <option>MAR</option>
+          <option>APR</option>
+          <option>MAY</option>
+          <option>JUN</option>
+          <option>JUL</option>
+          <option>AUG</option>
+          <option>SEP</option>
+          <option>OCT</option>
+          <option>NOV</option>
+          <option>DEC</option>
+        </select>
+      </span>
+      
+    </div>
         <input  type= "hidden" name ="type" value= "change">
         <input  type= "hidden" name ="destiny" value={{services.id}}>
         <input id="lat-pos" type="hidden" name="latitude" placeholder="Latitude">
@@ -30,7 +86,7 @@
 
 
       <script src="/javascripts/geolocalize.js"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=" ></script>
       <script type="text/javascript" src="/javascripts/addMap.js"></script>
     </div>
   </div>
@@ -98,8 +154,8 @@
                     {{/owner}}
                 </div>
                 <div class="date float-xs-right">
-                    <div class="day">25</div>
-                    <div class="month">Jul</div>
+                    <div class="day">{{this.day}}</div>
+                    <div class="month">{{this.month}}</div>
                 </div>
 
             </div>

@@ -5,8 +5,8 @@ const ratingSchema = new Schema({
 title : String, 
 content : String,
 authorId : {type: Schema.Types.ObjectId, ref: 'User'},
-destinationComment : {type: Schema.Types.ObjectId, ref: 'User'}
-
+destinationComment : {type: Schema.Types.ObjectId, ref: 'User'},
+rating: Number
 
 })
 

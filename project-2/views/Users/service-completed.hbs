@@ -12,8 +12,8 @@
           <p>{{serviceGlobal.serviceDescription}}</p>
         </div>
         <div class="date float-xs-right">
-          <div class="day">25</div>
-          <div class="month">Jul</div>
+          <div class="day">{{serviceGlobal.day}}</div>
+          <div class="month">{{serviceGlobal.month}}</div>
         </div>
 
       </div>
@@ -33,9 +33,17 @@
               <p>{{offerGlobal.serviceDescription}}</p>
             </div>
             <div class="date float-xs-right">
-              <div class="day">25</div>
-              <div class="month">Jul</div>
+              <div class="day">{{offerGlobal.day}}</div>
+              <div class="month">{{offerGlobal.month}}</div>
             </div>
 
           </div>
         </div>
+      <div id="map"></div>
+<script>
+  window.services = {{{ restStr }}}
+  console.log(window.services)
+  
+</script>
+
+<script src="/javascripts/listMap.js"></script>  

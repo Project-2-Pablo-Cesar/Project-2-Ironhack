@@ -1,23 +1,15 @@
-{{user}}
-<br>
-<br>
-<br>
-{{userForReview}}
-{{user.id}}
+<h2> Add a comment Mr {{user.username}}</h2>
 
+<form action="/review/{{userForReview.id}}" method="post">
+  <label for="title">Title:</label>
+  <input type="text" name="title"><br>
 
+  <label for="content">Description:</label>
+  <input type="text" name="content"><br>
 
+  <label for="rating">Rate:</label>
+  <input type="number" name="rating"><br>
 
+  <button type="submit">Send</button>
+</form> 
 
-<form method="POST" action="/review/{{user.id}}">
-  <p>Título<input type="text" name="title" placeholder="name"></p>
-  <p>Descripción<input type="text" name="content" placeholder="description" ></p>
-  <p>Photo<input type="file" name="photo"></p>
-  <input  type= "hidden" name ="type" value= "original">
-  <p>Until <input type="date" name="serviceExpiresDate" id="serviceExpiresDate"></p>
-  <label>Address</label>
-  <input id="lat-pos" type="hidden" name="latitude" placeholder="Latitude">
-  <input id="lng-pos" type="hidden" name="longitude" placeholder="Longitude">
-<button><input type="submit" value="SAVE"></button>
-  
-</form>

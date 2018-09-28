@@ -4,7 +4,8 @@ const Schema   = mongoose.Schema;
 const serviceSchema = new Schema ({
 title: String,
 //serviceDate: Date,
-serviceExpiresDate: Date,
+day: Number,
+month:String,
 user: {type : Schema.Types.ObjectId, ref: 'User'},
 //agent:  { type: Schema.Types.ObjectId, ref: 'User' },
 serviceDescription: String,
